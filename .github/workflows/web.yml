@@ -13,7 +13,7 @@ jobs:
         run: |
           flutter pub get
           flutter analyze
-          flutter format --set-exit-if-changed .
+          dart format --set-exit-if-changed .
           flutter build web --base-href "/magic_eight_ball/"
       - name: Copy built files
         run: |
