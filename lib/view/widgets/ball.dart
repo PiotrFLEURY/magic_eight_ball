@@ -7,9 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:shake_gesture/shake_gesture.dart';
 
 class Ball extends StatefulWidget {
-  const Ball({super.key, required this.possibleAnswers});
+  const Ball({
+    super.key,
+    required this.possibleAnswers,
+    required this.shouldReset,
+  });
 
   final List<String> possibleAnswers;
+  final bool shouldReset;
 
   @override
   State<Ball> createState() => _BallState();
@@ -19,14 +24,13 @@ class _BallState extends State<Ball> {
   String answer = '';
   Timer? timer;
   bool isShuffling = false;
-  bool shouldReset = true;
 
   void _shuffle() {
-    if (answer.isNotEmpty && shouldReset) {
+    if (answer.isNotEmpty && widget.shouldReset) {
       setState(() {
         isShuffling = true;
       });
-      timer = Timer(const Duration(milliseconds: 1000), () {
+      timer = Timer(const Duration(milliseconds: 600), () {
         setState(() {
           isShuffling = false;
           answer = '';
@@ -36,7 +40,7 @@ class _BallState extends State<Ball> {
       setState(() {
         isShuffling = true;
       });
-      timer = Timer(const Duration(milliseconds: 1000), () {
+      timer = Timer(const Duration(milliseconds: 600), () {
         setState(() {
           isShuffling = false;
           answer =
@@ -97,10 +101,10 @@ class _BallState extends State<Ball> {
                 child: GestureDetector(
                   onTap: _shuffle,
                   child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 400),
                     opacity: isShuffling ? 0.0 : 1.0,
                     child: AnimatedSlide(
-                      duration: const Duration(milliseconds: 800),
+                      duration: const Duration(milliseconds: 500),
                       offset:
                           isShuffling ? const Offset(0, 0.1) : const Offset(0, 0),
                       curve: Curves.decelerate,

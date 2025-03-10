@@ -31,19 +31,81 @@ const negativeAnswers = [
   "Impossible",
 ];
 
-const possibleAnswers = [
-  ...positiveAnswers,
-  ...negativeAnswers,
-  ...evasiveAnswers,
-];
-
-class MagicBall extends StatelessWidget {
+class MagicBall extends StatefulWidget {
   const MagicBall({super.key});
+
+  @override
+  State<MagicBall> createState() => _MagicBallState();
+}
+
+class _MagicBallState extends State<MagicBall> {
+  bool resetBall = false;
+  List<String> possibleAnswers = [];
+  late TextEditingController answerController;
+
+  void _toggleReset() {
+    setState(() {
+      resetBall = !resetBall;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    possibleAnswers = [
+      ...positiveAnswers,
+      ...negativeAnswers,
+      ...evasiveAnswers,
+    ];
+    answerController = TextEditingController(text: possibleAnswers.join('\n'));
+  }
+
+  void _changeAnswers() {
+    setState(() {
+      possibleAnswers = answerController.text.split('\n');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
-      body: Center(child: Ball(possibleAnswers: possibleAnswers)),
+      appBar: AppBar(title: const Text('Magic Ball')),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(color: Colors.blueGrey),
+              child: const Text('Menu'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Reset ball'),
+                Checkbox(
+                  value: resetBall,
+                  onChanged: (value) => _toggleReset(),
+                ),
+              ],
+            ),
+            TextField(
+              maxLines: 30,
+              controller: answerController,
+              decoration: const InputDecoration(
+                labelText: 'Enter your answers',
+                hintText: 'Enter your answers',
+              ),
+              onChanged: (value) => _changeAnswers(),
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints.tight(Size(450, 450)),
+          child: Ball(possibleAnswers: possibleAnswers, shouldReset: resetBall),
+        ),
+      ),
     );
   }
 }
