@@ -1,4 +1,3 @@
-
 import 'package:ecole_it_demo/view/widgets/ball.dart';
 import 'package:flutter/material.dart';
 

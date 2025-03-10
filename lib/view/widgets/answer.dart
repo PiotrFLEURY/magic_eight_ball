@@ -11,7 +11,6 @@ class Answer extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.deepPurple,
-        
       ),
       padding: const EdgeInsets.all(8.0),
       child: Center(

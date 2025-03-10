@@ -52,7 +52,6 @@ class _BallState extends State<Ball> {
     }
   }
 
-
   @override
   void dispose() {
     super.dispose();
@@ -106,9 +105,12 @@ class _BallState extends State<Ball> {
                     child: AnimatedSlide(
                       duration: const Duration(milliseconds: 500),
                       offset:
-                          isShuffling ? const Offset(0, 0.1) : const Offset(0, 0),
+                          isShuffling
+                              ? const Offset(0, 0.1)
+                              : const Offset(0, 0),
                       curve: Curves.decelerate,
-                      child: answer.isEmpty ? EightMark() : Answer(text: answer),
+                      child:
+                          answer.isEmpty ? EightMark() : Answer(text: answer),
                     ),
                   ),
                 ),
