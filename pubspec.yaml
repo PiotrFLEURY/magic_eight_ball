@@ -1,5 +1,5 @@
 name: ecole_it_demo
-description: "A new Flutter project."
+description: "Ecole IT démo"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -34,7 +34,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  rive: ^0.13.20
   shake_gesture: ^1.1.0
   
 
@@ -61,8 +60,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:   
-    - assets/
+  # assets:   
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

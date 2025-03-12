@@ -11,7 +11,7 @@ class EightMark extends StatelessWidget {
         child: Text(
           '8',
           style: TextStyle(
-            fontSize: 80,
+            fontSize: 64,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),

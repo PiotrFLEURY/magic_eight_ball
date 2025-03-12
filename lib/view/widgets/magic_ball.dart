@@ -6,8 +6,8 @@ import 'package:ecole_it_demo/view/widgets/eight_mark.dart';
 import 'package:flutter/material.dart';
 import 'package:shake_gesture/shake_gesture.dart';
 
-class Ball extends StatefulWidget {
-  const Ball({
+class MagicBall extends StatefulWidget {
+  const MagicBall({
     super.key,
     required this.possibleAnswers,
     required this.shouldReset,
@@ -17,10 +17,10 @@ class Ball extends StatefulWidget {
   final bool shouldReset;
 
   @override
-  State<Ball> createState() => _BallState();
+  State<MagicBall> createState() => _MagicBallState();
 }
 
-class _BallState extends State<Ball> {
+class _MagicBallState extends State<MagicBall> {
   String answer = '';
   Timer? timer;
   bool isShuffling = false;
@@ -81,7 +81,7 @@ class _BallState extends State<Ball> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(96.0),
+            padding: const EdgeInsets.all(64.0),
             child: Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
@@ -96,7 +96,7 @@ class _BallState extends State<Ball> {
                 border: Border.all(color: Colors.black, width: 1),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(16.0),
                 child: GestureDetector(
                   onTap: _shuffle,
                   child: AnimatedOpacity(
