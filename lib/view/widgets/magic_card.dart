@@ -6,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:shake_gesture/shake_gesture.dart';
 
 class MagicCard extends StatefulWidget {
-  const MagicCard({super.key, required this.possibleAnswers, required this.shouldReset});
+  const MagicCard({
+    super.key,
+    required this.possibleAnswers,
+    required this.shouldReset,
+  });
 
   final List<String> possibleAnswers;
   final bool shouldReset;
@@ -16,11 +20,10 @@ class MagicCard extends StatefulWidget {
 }
 
 class _MagicCardState extends State<MagicCard> {
-
   String answer = '';
   Timer? timer;
   bool isShuffling = false;
-  
+
   void _shuffle() {
     if (answer.isNotEmpty && widget.shouldReset) {
       setState(() {
@@ -68,10 +71,13 @@ class _MagicCardState extends State<MagicCard> {
                   padding: const EdgeInsets.all(64.0),
                   decoration: const BoxDecoration(
                     color: Colors.black,
-                    shape: BoxShape.circle
+                    shape: BoxShape.circle,
                   ),
-                  child: const EightMark()),
-                answer.isEmpty ? const CustomText('Shake to reveal your fortune...') : CustomText(answer),
+                  child: const EightMark(),
+                ),
+                answer.isEmpty
+                    ? const CustomText('Shake to reveal your fortune...')
+                    : CustomText(answer),
               ],
             ),
           ),
@@ -88,7 +94,8 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
+    return Text(
+      text,
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 18.0,

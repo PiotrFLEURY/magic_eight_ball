@@ -1,12 +1,9 @@
 import 'package:ecole_it_demo/model/default_answers.dart';
 import 'package:flutter/widgets.dart';
 
-enum Appearance {
-  ball, card
-}
+enum Appearance { ball, card }
 
 class MagicBallViewModel with ChangeNotifier {
-
   bool resetBall = false;
   List<String> possibleAnswers = [];
   Appearance appearance = Appearance.ball;
@@ -31,7 +28,8 @@ class MagicBallViewModel with ChangeNotifier {
   }
 
   void toggleAppearance() {
-    appearance = appearance == Appearance.ball ? Appearance.card : Appearance.ball;
+    appearance =
+        appearance == Appearance.ball ? Appearance.card : Appearance.ball;
     notifyListeners();
   }
 }

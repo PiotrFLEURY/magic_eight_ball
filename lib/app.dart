@@ -6,8 +6,6 @@ class EcoleItDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MagicBallPage(),
-    );
+    return MaterialApp(home: const MagicBallPage());
   }
 }

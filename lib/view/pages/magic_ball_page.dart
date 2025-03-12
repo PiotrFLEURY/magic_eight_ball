@@ -32,62 +32,65 @@ class _MagicBallPageState extends State<MagicBallPage> {
     return AnimatedBuilder(
       animation: viewModel,
       builder:
-              (context, _) => Scaffold(
-        backgroundColor: Colors.blueGrey,
-        appBar: AppBar(title: const Text('Magic Ball')),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          (context, _) => Scaffold(
+            backgroundColor: Colors.blueGrey,
+            appBar: AppBar(title: const Text('Magic Ball')),
+            drawer: Drawer(
+              child: ListView(
                 children: [
-                  const Text('Reset ball'),
-                  Checkbox(
-                    value: viewModel.resetBall,
-                    onChanged: (value) => viewModel.toggleReset(value),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Reset ball'),
+                      Checkbox(
+                        value: viewModel.resetBall,
+                        onChanged: (value) => viewModel.toggleReset(value),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Appearance'),
-                  Switch(
-                    value: viewModel.appearance == Appearance.ball ? false : true,
-                    onChanged: (value) => viewModel.toggleAppearance(),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Appearance'),
+                      Switch(
+                        value:
+                            viewModel.appearance == Appearance.ball
+                                ? false
+                                : true,
+                        onChanged: (value) => viewModel.toggleAppearance(),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Divider(),
-              TextField(
-                maxLines: 30,
-                controller: answerController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter your answers',
-                  hintText: 'Enter your answers',
-                ),
-                onChanged: (value) => _changeAnswers(),
-              ),
-            ],
-          ),
-        ),
-        body: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints.tight(Size(300, 450)),
-            child:
-                viewModel.appearance == Appearance.ball
-                    ? MagicBall(
-                      possibleAnswers: viewModel.possibleAnswers,
-                      shouldReset: viewModel.resetBall,
-                    )
-                    : MagicCard(
-                      possibleAnswers: viewModel.possibleAnswers,
-                      shouldReset: viewModel.resetBall,
+                  Divider(),
+                  TextField(
+                    maxLines: 30,
+                    controller: answerController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your answers',
+                      hintText: 'Enter your answers',
                     ),
+                    onChanged: (value) => _changeAnswers(),
+                  ),
+                ],
+              ),
+            ),
+            body: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints.tight(Size(300, 450)),
+                child:
+                    viewModel.appearance == Appearance.ball
+                        ? MagicBall(
+                          possibleAnswers: viewModel.possibleAnswers,
+                          shouldReset: viewModel.resetBall,
+                        )
+                        : MagicCard(
+                          possibleAnswers: viewModel.possibleAnswers,
+                          shouldReset: viewModel.resetBall,
+                        ),
+              ),
+            ),
           ),
-        ),
-      ),
     );
   }
 }
