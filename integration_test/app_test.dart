@@ -12,7 +12,7 @@ void main() {
     app.main();
 
     await tester.pumpAndSettle();
-    
+
     expect(find.text('Magic Ball'), findsOneWidget);
     expect(find.byType(EightMark), findsOneWidget);
 

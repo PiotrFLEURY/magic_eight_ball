@@ -13,8 +13,10 @@ void main() {
       expect(evasiveAnswers.length, 7);
     });
     test('all default answer lenght is 20', () {
-      expect(positiveAnswers.length + negativeAnswers.length + evasiveAnswers.length, 20);
+      expect(
+        positiveAnswers.length + negativeAnswers.length + evasiveAnswers.length,
+        20,
+      );
     });
   });
-  
 }
